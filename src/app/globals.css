@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RESET GENERAL */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000; /* fondo negro absoluto */
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* TITULOS */
+h1, h2, h3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #d926a9; /* rosa punk */
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px #d926a9, 0 0 20px #39ff14, 0 0 40px rgba(255,255,255,0.2);
+  animation: neon-flicker 2.5s infinite alternate;
+}
+
+/* Texto general */
+p, span, li {
+  color: #ccc;
+  line-height: 1.7;
+}
+
+/* HERO glitch vibes */
+.glitch {
+  position: relative;
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+}
+.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  color: #39ff14; /* verde glitch */
+}
+.glitch::after {
+  animation: glitchBottom 1.5s infinite linear alternate-reverse;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  color: #d926a9;
+}
+
+/* Links y botones */
+a, button {
+  color: #000;
+  background-color: #d926a9;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px #d926a9, 0 0 20px #ff4fdc, 0 0 30px rgba(57,255,20,0.3);
+}
+a:hover, button:hover {
+  background-color: #ff4fdc;
+  box-shadow: 0 0 20px #ff4fdc, 0 0 40px #39ff14;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Cards */
+.card {
+  background: linear-gradient(145deg, #111, #000);
+  border: 2px solid #d926a9;
+  padding: 1.2rem;
+  border-radius: 14px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px rgba(217, 38, 169, 0.5);
+}
+.card:hover {
+  border-color: #39ff14; /* verde glitch */
+  transform: translateY(-6px) rotate(1deg);
+  box-shadow: 0 0 25px #39ff14, 0 0 50px rgba(217,38,169,0.8);
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  height: 6px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #d926a9, #39ff14);
+  border-radius: 10px;
+}
+
+/* ANIMACIONES */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(2deg); }
+  40% { transform: skew(-2deg); }
+  60% { transform: skew(4deg); }
+  80% { transform: skew(-4deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes glitchTop {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(-5px,-5px); }
+  40% { transform: translate(-10px,5px); }
+  60% { transform: translate(5px,-2px); }
+  80% { transform: translate(2px,5px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes glitchBottom {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(5px,5px); }
+  40% { transform: translate(10px,-5px); }
+  60% { transform: translate(-5px,2px); }
+  80% { transform: translate(-2px,-5px); }
+  100% { transform: translate(0,0); }
+}
